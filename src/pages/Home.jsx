@@ -36,7 +36,7 @@ const HomePage = () => {
             type="text"
             value={kidInput}
             onChange={handleKidInputChange}
-            className="w-64 h-96 px-4 py-2 border border-gray-300 rounded"
+            className="w-64 h-32 px-4 py-2 border border-gray-300 rounded"
           />
         </div>
         <div className="mb-4 flex">
