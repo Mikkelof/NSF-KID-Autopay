@@ -7,7 +7,7 @@ const HomePage = () => {
       { title: 'Mottaker kontonummer', value: '78740670025' },
       { title: 'Ventetid mellom betalinger i ms', value: '2000' },
       { title: 'Url', value: 'https://district.danskebank.no/#/app?app=payments&path=%2FBN%2FBetaling-BENyInit-GenericNS%2FGenericNS%3Fq%3D1569587951868' },
-      { title: 'Betalingsmelding', value: 'Lisens NSF' }
+      { title: 'Betalingsmelding', value: 'NSF Lisens' }
     ]);
   
     const handleKidInputChange = (event) => {
@@ -19,11 +19,44 @@ const HomePage = () => {
       newConfigValues[index].value = event.target.value;
       setConfigValues(newConfigValues);
     };
+
+    const createCommand = (command, target = "", value = "") => ({
+        Command: command,
+        Target: target,
+        Value: value,
+    });
+
+    const generateNavigator = () => [
+        createCommand("open", configValues[3].value),
+        createCommand("selectFrame", "id=payments"),
+        createCommand("selectFrame", "id=indhold"),
+    ];
+
+    const generateCIN = (cin) => [
+        createCommand("click", "name=txiFraTxt"),
+        createCommand("type", "name=txiFraTxt", configValues[4].value),
+        createCommand("type", "name=txiTilKto", configValues[1].value),
+        createCommand("type", "name=txiOCRRef", "" + cin),
+        createCommand("type", "name=txiBetBel", "" + configValues[0].value),
+        createCommand("clickAndWait", "id=lblBTSaveID"),
+        createCommand("pause", configValues[2].value),
+    ];
   
     const handleCopyScript = () => {
-      // Implement your logic to copy the script
-      console.log(configValues[2].value);
-      // You can use the 'script' variable to copy it to the clipboard or perform any other action
+      const now = new Date();
+      const obj = {
+        Name: "NTNUISvommingAutopayer",
+        CreationDate: now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate(),
+        Commands: [],
+      };
+      obj.Commands.push(...generateNavigator());
+
+      kidInput.split("\n").forEach((cin) => {
+        if (isNaN(cin) || cin.length < 1) return;
+        obj.Commands.push(...generateCIN(cin));
+      });
+      const output = JSON.stringify(obj);
+      navigator.clipboard.writeText(output);
     };
   
     return (
