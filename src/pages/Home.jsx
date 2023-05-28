@@ -71,7 +71,7 @@ const HomePage = () => {
             <li>6. Lim inn scriptet i UI.Vision RPA</li>
             <li>7. SE OVER SCRIPTET OG SØRG FOR AT DET SER RIKTIG UT</li>
             <li>8. Kjør scriptet hvis det ser greit ut</li>
-            <li>9. ETTER at alle betalinger er gjennomført må du slette alle KID-nr fra det google-docs dokumentet fra styredriven</li>
+            <li>9. ETTER at alle betalinger er gjennomført må du slette alle KID-nr fra google-docs dokumentet fra styredriven</li>
         </ul>
       </div>
     );
