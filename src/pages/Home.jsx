@@ -63,7 +63,7 @@ const HomePage = () => {
       <div className="flex flex-col items-center">
         <h1 className="text-2xl font-bold mb-4">NSF KID AutoPay</h1>
         <div className="mb-4">
-          <label htmlFor="kid-input" className="block font-semibold mb-1">KID nummere separert med komma</label>
+          <label htmlFor="kid-input" className="block font-semibold mb-1">KID nummere (ett på hver linje)</label>
           <textarea
             id="kid-input"
             type="text"
@@ -97,14 +97,14 @@ const HomePage = () => {
         <h2 className='text-xl font-bold mb-4'>Instrukser: </h2>
         <ul>
             <li>1. Installer Chrome extension fra følgende link: <a href="https://chrome.google.com/webstore/detail/uivision-rpa/gcbalfbdmfieckjlnblleoemohcganoc?hl=en">UI.Vision RPA</a></li>
-            <li>2. Kopier alle KOMMASEPARERTE KID nummere fra google docs dokumentet fra styredriven. Her er det viktig å dobbeltsjekke at ALLE KID-nr er kommaseparerte</li>
-            <li>3. Lim inn alle KID-nr fra den filen i den store boksen på toppen</li>
+            <li>2. Kopier alle KID nummere fra google docs dokumentet fra styredriven</li>
+            <li>3. Lim inn alle KID-nr fra den filen i boksen på toppen. Her er det viktig å dobbeltsjekke at ALLE KID-nr er på sin egen linje og det kun er KID-nr som er lagt inn</li>
             <li>4. Sjekk at alle alternativene (Beløp, Kontonummer) stemmer</li>
             <li>5. Trykk på Kopier Script</li>
             <li>6. Lim inn scriptet i UI.Vision RPA</li>
             <li>7. SE OVER SCRIPTET OG SØRG FOR AT DET SER RIKTIG UT</li>
             <li>8. Kjør scriptet hvis det ser greit ut</li>
-            <li>9. ETTER at alle betalinger er gjennomført må du slette alle KID-nr fra google-docs dokumentet fra styredriven</li>
+            <li>9. ETTER at alle betalinger er gjennomført må du slette alle KID-nr du har betalt til fra google-docs dokumentet fra styredriven</li>
         </ul>
       </div>
     );
